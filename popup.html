@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Proxy Switcher</title>
+    <style>
+        * { box-sizing: border-box; font-family: Arial, sans-serif; margin: 0; padding: 0;}
+        body { width: 320px; padding: 20px; background: linear-gradient(#E93E7C, #2B62EC); color: white; }
+        input, button, textarea { margin-bottom: 10px; width: 100%; padding: 7px; border-radius: 5px; outline: none; border: solid 2px transparent; }
+        button { text-transform: uppercase; color: white; background: #E93E7C; cursor: pointer; }
+        button:hover { background: #D63972; }
+        input:focus, button:focus { border: solid 2px black; }
+        a, span { cursor: pointer; }
+        a:hover, span:hover { text-decoration: underline; }
+        .nav-tab { padding: 5px; border: none; margin-bottom: 10px; cursor: pointer; }
+        .nav-tab.active { border-bottom: solid 3px #E93E7C; }
+        .tab { display: none; }
+        .row { display: flex; }
+        .row .col { margin-right: 10px; }
+        .row .col:last-child { margin-right: 0px; }
+        #status { margin: 10px 0; }
+        #savedProxies div { padding: 10px; border: 1px solid white; border-radius: 5px; margin-bottom: 10px; }
+        .proxy { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+    </style>
+</head>
+<body>
+    <h1>Proxy Switcher</h1>
+    <div id="status">Status: Not connected</div>
+
+    <div class="row">
+        <div class="col nav-tab active" name="nav-tab" data-tab="tab-saved">Proxies</div>
+        <div class="col nav-tab" name="nav-tab" data-tab="tab-form">Connection form</div>
+        <div class="col nav-tab" name="nav-tab" data-tab="tab-bypass">Bypass list</div>
+    </div>
+
+    <div class="tab" style="display: block;" id="tab-saved">
+        <div id="savedProxies"></div>
+    </div>
+
+    <div class="tab" id="tab-form">
+        <input id="proxyString" type="text" placeholder="scheme://username:password@host:port">
+        <button id="connect">Connect</button>
+        <button id="disconnect">Disconnect</button>
+    </div>
+
+    <div class="tab" id="tab-bypass">
+        <textarea id="bypassList" placeholder="Enter URLs or IPs separated by ;"></textarea>
+        <button id="saveBypassList">Save</button>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
